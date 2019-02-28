@@ -10,7 +10,7 @@ import (
 	"superstellar/backend/monitor"
 	"superstellar/backend/utils"
 
-	"github.com/gorilla/websocket"
+	"github.com/edgestack/websocket"
 )
 
 // Server struct holds server variables.

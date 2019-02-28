@@ -6,7 +6,7 @@ const WIDTH = 300;
 const HEIGHT = 130;
 
 export default class GameOverDialog {
-  constructor (killedBy) {
+  constructor () {
     this.domNode = document.createElement("div");
 
     this.domNode.className = 'game-dialog';

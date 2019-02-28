@@ -1,9 +1,10 @@
 package leaderboard
 
 import (
+	"superstellar/backend/constants"
+
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"superstellar/backend/constants"
 )
 
 var _ = Describe("FullLeaderboard", func() {

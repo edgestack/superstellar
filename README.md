@@ -22,7 +22,7 @@ Destroy moving objects and don’t get killed by other players and asteroids. Yo
 5. Open new console and go to the game source directory.
 6. `cd webroot`
 7. `npm install`
-8. `npm run dev`
+8. `BACKEND_HOST=localhost BACKEND_PORT=8080 npm run dev`
 9. Go to [http://localhost:8090](http://localhost:8090)
 
 ## Running stress test util
@@ -32,8 +32,8 @@ You can run a stress test util that spawns any number of clients which connect t
 1. `go build && go install`
 1. Run `$GOPATH/bin/superstellar_utils 127.0.0.1 100 50ms` for spawning 100 clients, with 50 ms interval.
 
-## Live profiling 
-It's possible to dump various information from the running server, e.g. stacktraces of all goroutines which might be useful in case of a deadlock. 
+## Live profiling
+It's possible to dump various information from the running server, e.g. stacktraces of all goroutines which might be useful in case of a deadlock.
 
 1. Run server
 1. Go to [http://localhost:8080/debug/pprof/](http://localhost:8080/debug/pprof/)
@@ -52,4 +52,4 @@ if (__DEBUG__) {
 
 ## Compiling protobufs
 
-Run `./generateProto.sh` 
+Run `./generateProto.sh`

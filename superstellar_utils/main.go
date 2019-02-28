@@ -14,7 +14,7 @@ import (
 
 	"net/url"
 
-	"github.com/gorilla/websocket"
+	"github.com/edgestack/websocket"
 )
 
 const botEmoji = '🤖'

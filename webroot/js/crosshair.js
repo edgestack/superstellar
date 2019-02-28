@@ -1,5 +1,5 @@
-import { globalState, stage, renderer } from './globals.js';
-import * as Utils from './utils';
+import { stage } from './globals.js';
+// import * as Utils from './utils';
 import { CROSSHAIR_TEXTURE } from './constants.js';
 import Assets from './assets';
 
@@ -19,9 +19,9 @@ export default class Crosshair {
   }
 
   update(x, y) {
-    let relX = x - renderer.width / 2;
-    let relY = y - renderer.height / 2;
-    let targetAngle = Math.atan2(relY, relX);
+    // let relX = x - renderer.width / 2;
+    // let relY = y - renderer.height / 2;
+    // let targetAngle = Math.atan2(relY, relX);
 
 //    this.container.x = renderer.width / 2 + Math.cos(targetAngle) * 150 - 16;
 //    this.container.y = renderer.height / 2 + Math.sin(targetAngle) * 150 - 16;

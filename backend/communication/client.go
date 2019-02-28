@@ -12,7 +12,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"github.com/gorilla/websocket"
+	"github.com/edgestack/websocket"
 )
 
 const channelBufSize = 100
