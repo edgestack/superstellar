@@ -10,7 +10,7 @@ import (
 	"superstellar/backend/monitor"
 	"superstellar/backend/utils"
 
-	"github.com/edgestack/websocket"
+	"github.com/gorilla/websocket"
 )
 
 // Server struct holds server variables.
@@ -46,7 +46,7 @@ func NewServer(pattern string, monitor *monitor.Monitor, eventDispatcher *events
 }
 
 // Listen runs puts server into listening mode.
-func (s *Server) Listen() {
+func (s *Server) Listen() http.Handler {
 	log.Println("Listening server...")
 
 	handler := func(w http.ResponseWriter, r *http.Request) {
@@ -69,8 +69,10 @@ func (s *Server) Listen() {
 		w.WriteHeader(http.StatusOK)
 	}
 
-	http.HandleFunc(s.pattern, handler)
-	http.HandleFunc("/healthz", healthCheckHandler)
+	sm := http.NewServeMux()
+	sm.HandleFunc(s.pattern, handler)
+	sm.HandleFunc("/healthz", healthCheckHandler)
+	return sm
 }
 
 func (s *Server) SendToAllClients(message proto.Message) {

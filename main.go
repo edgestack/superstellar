@@ -5,11 +5,8 @@ package main
 import (
 	"log"
 	"math/rand"
-	"net/http"
 	"time"
-)
 
-import (
 	_ "net/http/pprof"
 	"os"
 	"superstellar/backend/ai"
@@ -21,6 +18,8 @@ import (
 	"superstellar/backend/simulation"
 	"superstellar/backend/state"
 	"superstellar/backend/utils"
+
+	"github.com/maxmcd/wasabi"
 )
 
 func main() {
@@ -76,7 +75,7 @@ func main() {
 	botManager := ai.NewBotManager(eventDispatcher, space, idManager, userNameRegistry)
 	eventDispatcher.RegisterTimeTickListener(botManager)
 	eventDispatcher.RegisterObjectDestroyedListener(botManager)
-	botManager.CreateBots(5)
+	botManager.CreateBots(1)
 
 	if debug {
 		fileWriter, err := communication.NewFileWriter(space)
@@ -89,10 +88,10 @@ func main() {
 	}
 
 	monitor.Run()
-	go server.Listen()
+	h := server.Listen()
 
 	go eventDispatcher.RunEventLoop()
 	go physicsTicker.Run()
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(wasabi.ListenAndServe("127.0.0.1:8080", h))
 }
